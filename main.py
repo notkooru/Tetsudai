@@ -9,8 +9,20 @@ def account_create(username, password, riotID, banned=0):
 def account_read():
     pass
 
-def account_update():
-    pass
+def account_update(account_id, username="", password="", riotid="", banned=0):
+    global accounts
+    account_edit = accounts[account_id]
+    
+    if username != "":
+        account_edit[0] = username
+    if password != "":
+        account_edit[1] = password
+    if riotid != "":
+        account_edit[2] = riotid
+    if banned != account_edit[3]:
+        account_edit[3] = banned
+    
+    accounts[account_id] = account_edit
 
 def account_delete():
     pass
