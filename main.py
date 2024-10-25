@@ -5,6 +5,7 @@ import json
 def account_create(username, password, riotID, region, banned=False):
     account = [username, password, riotID, region, banned]
     accounts.append(account)
+    save_db()
 
 def accounts_read():
     global accounts
@@ -33,10 +34,12 @@ def account_update(account_id, username="", password="", riotid="", region="", b
         account_edit[4] = banned
     
     accounts[account_id] = account_edit
+    save_db()
 
 def account_delete(account_id):
     global accounts
     del accounts[account_id]
+    save_db()
 
 # DB actions
 def save_db():
@@ -46,12 +49,15 @@ def save_db():
     f.close
 
 def load_db():
-    f = open(FILE, "r")
-    undump = json.load(f)
-    global accounts
-    accounts = undump
-    f.close()
-
+    if os.path.exists(FILE):
+        with open(FILE, "r") as f:
+            undump = json.load(f)
+            global accounts
+            accounts = undump
+    else:
+        accounts = []
+        save_db()
+        
 # Misc
 FILE = "db.json"
 
