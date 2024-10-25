@@ -1,4 +1,5 @@
 import os
+import json
 
 def paste_to_clipboard(credentials):
     command = "echo | set /p null=" + credentials.strip() + "| clip"
