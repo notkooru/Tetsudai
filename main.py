@@ -40,6 +40,7 @@ def load_db():
     undump = json.load(f)
     global accounts
     accounts = undump
+    f.close()
 
 # Misc
 FILE = "db.json"
