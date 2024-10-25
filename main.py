@@ -12,6 +12,11 @@ def accounts_read():
     for index, account in enumerate(accounts):
         print(f"{index}\t{account[0]}\t{account[1]}\t{account[2]}\t{account[3]}\t")
 
+def account_get(account_id):
+    global accounts
+    account = accounts[account_id]
+    paste_to_clipboard(f"{account[0]}, {account[1]}")
+
 def account_update(account_id, username="", password="", riotid="", banned=0):
     global accounts
     account_edit = accounts[account_id]
