@@ -28,7 +28,7 @@ def account_update(account_id, username="", password="", riotid="", region="", b
     if riotid != "":
         account_edit[2] = riotid
     if region != "":
-        account_edit[3]
+        account_edit[3] = region
     if banned != account_edit[4]:
         account_edit[4] = banned
     
@@ -92,7 +92,20 @@ while True:
         account_get(account_id)
     
     elif option == "4":
-        print("lazy")
+        accounts_read()
+        account_id = input("insert id:")
+        username = input("insert new username (enter to skip)")
+        password = input("insert new password (enter to skip)")
+        riot_id = input("insert new riot id (enter to skip)")
+        region = input("insert new region (enter to skip)")
+        banned = input("banned? (y/n) (enter to skip)")
+        if banned == "y":
+            banned = True
+        else:
+            banned = False
+        account_id = int(account_id)
+        account_update(account_id, username, password, riot_id, region, banned)
+
     
     elif option == "5":
         account_id = input("insert account id: ")
