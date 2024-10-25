@@ -1,10 +1,6 @@
 import os
 import json
 
-def paste_to_clipboard(credentials):
-    command = "echo | set /p null=" + credentials.strip() + "| clip"
-    os.system(command)
-
 # CRUD
 def account_create(username, password, riotID, banned=0):
     account = [username, password, riotID, banned]
@@ -20,7 +16,6 @@ def account_delete():
     pass
 
 # DB actions
-
 def save_db():
     dump = json.dumps(accounts, indent=4)
     f = open(FILE, "w")
@@ -35,6 +30,10 @@ def load_db():
 
 # Misc
 FILE = "db.json"
+
+def paste_to_clipboard(credentials):
+    command = "echo | set /p null=" + credentials.strip() + "| clip"
+    os.system(command)
 
 #account list structure: username, password, riotID, banned status
 accounts = []
