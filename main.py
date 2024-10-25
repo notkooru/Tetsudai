@@ -24,8 +24,9 @@ def account_update(account_id, username="", password="", riotid="", banned=0):
     
     accounts[account_id] = account_edit
 
-def account_delete():
-    pass
+def account_delete(account_id):
+    global accounts
+    del accounts[account_id]
 
 # DB actions
 def save_db():
