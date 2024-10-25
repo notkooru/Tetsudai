@@ -22,10 +22,19 @@ def account_delete():
 # DB actions
 
 def save_db():
-    pass
+    dump = json.dumps(accounts, indent=4)
+    f = open(FILE, "w")
+    f.write(dump)
+    f.close
 
 def load_db():
-    pass
+    f = open(FILE, "r")
+    undump = json.load(f)
+    global accounts
+    accounts = undump
+
+# Misc
+FILE = "db.json"
 
 #account list structure: username, password, riotID, banned status
 accounts = []
