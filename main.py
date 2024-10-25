@@ -6,8 +6,11 @@ def account_create(username, password, riotID, banned=0):
     account = [username, password, riotID, banned]
     accounts.append(account)
 
-def account_read():
-    pass
+def accounts_read():
+    global accounts
+    print("index\tusername\tpassword\triot id\tbanned")
+    for index, account in enumerate(accounts):
+        print(f"{index}\t{account[0]}\t{account[1]}\t{account[2]}\t{account[3]}\t")
 
 def account_update(account_id, username="", password="", riotid="", banned=0):
     global accounts
