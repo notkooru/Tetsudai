@@ -18,5 +18,13 @@ def account_update():
 def account_delete():
     pass
 
+# DB actions
+
+def save_db():
+    pass
+
+def load_db():
+    pass
+
 #account list structure: username, password, riotID, banned status
 accounts = []
