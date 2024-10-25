@@ -5,8 +5,9 @@ def paste_to_clipboard(credentials):
     os.system(command)
 
 # CRUD
-def account_create():
-    pass
+def account_create(username, password, riotID, banned=0):
+    account = [username, password, riotID, banned]
+    return account
 
 def account_read():
     pass
@@ -16,3 +17,6 @@ def account_update():
 
 def account_delete():
     pass
+
+#account list structure: username, password, riotID, banned status
+accounts = []
