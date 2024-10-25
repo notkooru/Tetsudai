@@ -7,7 +7,7 @@ def paste_to_clipboard(credentials):
 # CRUD
 def account_create(username, password, riotID, banned=0):
     account = [username, password, riotID, banned]
-    return account
+    accounts.append(account)
 
 def account_read():
     pass
