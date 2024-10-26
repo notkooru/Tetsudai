@@ -1,7 +1,8 @@
 import os
 import json
+from tabulate import tabulate
 
-# Use this to create exe 
+# Use this to create exe
 # python -m PyInstaller --onefile main.py
 
 # CRUD
