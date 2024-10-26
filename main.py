@@ -1,15 +1,19 @@
 import os
 import json
 
+# Use this to create exe 
+# python -m PyInstaller --onefile main.py
+
 # CRUD
-def account_create(username, password, riot_id, region, banned=False):
+def account_create(username, password, riot_id, region, banned):
+    global accounts
     account = [username, password, riot_id, region, banned]
     accounts.append(account)
     save_db()
 
 def accounts_read():
     global accounts
-    
+
     if len(accounts) == 0:
         print("No accounts to show")
     else:
@@ -25,7 +29,7 @@ def account_get(account_id):
 def account_update(account_id, username="", password="", riot_id="", region="", banned=False):
     global accounts
     account_edit = accounts[account_id]
-    
+
     if username != "":
         account_edit[0] = username
     if password != "":
@@ -36,7 +40,7 @@ def account_update(account_id, username="", password="", riot_id="", region="", 
         account_edit[3] = region
     if banned != account_edit[4]:
         account_edit[4] = banned
-    
+
     accounts[account_id] = account_edit
     save_db()
 
@@ -45,8 +49,9 @@ def account_delete(account_id):
     del accounts[account_id]
     save_db()
 
-# DB actions
+# Database actions
 def save_db():
+    global accounts
     dump = json.dumps(accounts, indent=4)
     f = open(FILE, "w")
     f.write(dump)
@@ -60,22 +65,24 @@ def load_db():
             accounts = undump
     else:
         save_db()
-        
-# Misc
+
+# Constants and useful functions
 FILE = "db.json"
 
-def paste_to_clipboard(credentials):
-    command = "echo | set /p null=" + credentials.strip() + "| clip"
+def paste_to_clipboard(account):
+    command = "echo | set /p null=" + account.strip() + "| clip"
     os.system(command)
 
 def clear():
     os.system('cls')
 
-#account list structure: username, password, riotID, banned status
+# Account list structure: username, password, riotID, banned status
 accounts = []
 
+# Startup actions
 load_db()
 
+# GUI/CLI
 while True:
     clear()
     print("1. create account\n2. read all accounts\n3. get account\n4. update account\n5. delete account\nuse 0 to exit")
@@ -83,7 +90,7 @@ while True:
     if option == "0":
         save_db()
         break
-    
+
     elif option == "1":
         clear()
         username = input("insert username: ")
@@ -102,7 +109,7 @@ while True:
         clear()
         accounts_read()
         input("press enter to return...")
-    
+
     elif option == "3":
         clear()
         accounts_read()
@@ -112,7 +119,7 @@ while True:
             input("account copied, press enter to return...")
         except (ValueError, IndexError):
             input("wrong input, press enter to return...")
-    
+
     elif option == "4":
         clear()
         accounts_read()
@@ -132,7 +139,6 @@ while True:
         except (ValueError, IndexError):
             input("wrong input, press enter to return...")
 
-    
     elif option == "5":
         clear()
         accounts_read()
@@ -142,6 +148,6 @@ while True:
             input("account deleted, press enter to return...")
         except (ValueError, IndexError):
             input("wrong input, press enter to return...")
-    
+
     else:
         print("not in range")
