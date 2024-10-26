@@ -2,8 +2,8 @@ import os
 import json
 
 # CRUD
-def account_create(username, password, riotID, region, banned=False):
-    account = [username, password, riotID, region, banned]
+def account_create(username, password, riot_id, region, banned=False):
+    account = [username, password, riot_id, region, banned]
     accounts.append(account)
     save_db()
 
@@ -18,7 +18,7 @@ def account_get(account_id):
     account = accounts[account_id]
     paste_to_clipboard(f"{account[0]}, {account[1]}")
 
-def account_update(account_id, username="", password="", riotid="", region="", banned=False):
+def account_update(account_id, username="", password="", riot_id="", region="", banned=False):
     global accounts
     account_edit = accounts[account_id]
     
@@ -26,8 +26,8 @@ def account_update(account_id, username="", password="", riotid="", region="", b
         account_edit[0] = username
     if password != "":
         account_edit[1] = password
-    if riotid != "":
-        account_edit[2] = riotid
+    if riot_id != "":
+        account_edit[2] = riot_id
     if region != "":
         account_edit[3] = region
     if banned != account_edit[4]:
@@ -65,7 +65,7 @@ def paste_to_clipboard(credentials):
     command = "echo | set /p null=" + credentials.strip() + "| clip"
     os.system(command)
 
-#account list structure: username, password, riotID, banned status
+#account list structure: username, password, riot id, banned status
 accounts = []
 
 load_db()
