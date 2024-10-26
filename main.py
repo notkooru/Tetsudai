@@ -55,7 +55,6 @@ def load_db():
             global accounts
             accounts = undump
     else:
-        accounts = []
         save_db()
         
 # Misc
