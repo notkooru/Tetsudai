@@ -74,6 +74,7 @@ accounts = []
 load_db()
 
 while True:
+    clear()
     print("1. create account\n2. read all accounts\n3. get account\n4. update account\n5. delete account\nuse 0 to exit")
     option = input()
     if option == "0":
@@ -81,6 +82,7 @@ while True:
         break
     
     elif option == "1":
+        clear()
         username = input("insert username: ")
         password = input("insert password: ")
         riot_id = input("insert riot id: ")
@@ -91,16 +93,23 @@ while True:
         else:
             banned = False
         account_create(username, password, riot_id, region, banned)
+        input("account created, press a key to return")
 
     elif option == "2":
+        clear()
         accounts_read()
+        input("press enter to return")
     
     elif option == "3":
+        clear()
+        accounts_read()
         account_id = input("insert account id: ")
         account_id = int(account_id)
         account_get(account_id)
+        input("account copied, press a key to return")
     
     elif option == "4":
+        clear()
         accounts_read()
         account_id = input("insert id:")
         username = input("insert new username (enter to skip)")
@@ -114,12 +123,16 @@ while True:
             banned = False
         account_id = int(account_id)
         account_update(account_id, username, password, riot_id, region, banned)
+        input("account updated, press a key to return")
 
     
     elif option == "5":
+        clear()
+        accounts_read()
         account_id = input("insert account id: ")
         account_id = int(account_id)
         account_delete(account_id)
+        input("account deleted, press a key to return")
     
     else:
         print("not in range")
