@@ -72,4 +72,15 @@ accounts = []
 #GUI
 root = tkinter.Tk()
 
+window_height = 800
+window_width = 800
+
+screen_height = root.winfo_screenheight()
+screen_width = root.winfo_screenwidth()
+
+x = int((screen_height/2) - (window_height/2))
+y = int((screen_width/2) - (window_width/2))
+
+root.geometry(f"{window_width}x{window_height}+{y}+{x}")
+
 root.mainloop()
