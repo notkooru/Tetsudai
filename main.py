@@ -14,13 +14,18 @@ def account_create(username, password, riot_id, region, banned):
 
 def accounts_read():
     global accounts
+    
+    accounts_formated = []
+
+    for index, account in enumerate(accounts):
+        accounts_formated.append([index, account[0], account[1], account[2], account[3], account[4]])
+
+    headers = ["id", "username", "password", "riot id", "region", "banned"]
 
     if len(accounts) == 0:
         print("No accounts to show")
     else:
-        print("index\tusername\tpassword\triot id\t\t\tregion\tbanned")
-        for index, account in enumerate(accounts):
-            print(f"{index}\t{account[0]}\t{account[1]}\t{account[2]}\t{account[3]}\t{account[4]}")
+        print(tabulate(accounts_formated, headers=headers, tablefmt="grid"))
 
 def account_get(account_id):
     global accounts
