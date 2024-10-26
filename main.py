@@ -65,6 +65,9 @@ def paste_to_clipboard(credentials):
     command = "echo | set /p null=" + credentials.strip() + "| clip"
     os.system(command)
 
+def clear():
+    os.system('cls')
+
 #account list structure: username, password, riotID, banned status
 accounts = []
 
