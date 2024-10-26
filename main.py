@@ -9,9 +9,13 @@ def account_create(username, password, riot_id, region, banned=False):
 
 def accounts_read():
     global accounts
-    print("index\tusername\tpassword\triot id\tregion\t\t\tbanned")
-    for index, account in enumerate(accounts):
-        print(f"{index}\t{account[0]}\t{account[1]}\t{account[2]}\t{account[3]}\t{account[4]}")
+    
+    if len(accounts) == 0:
+        print("No accounts to show")
+    else:
+        print("index\tusername\tpassword\triot id\t\t\tregion\tbanned")
+        for index, account in enumerate(accounts):
+            print(f"{index}\t{account[0]}\t{account[1]}\t{account[2]}\t{account[3]}\t{account[4]}")
 
 def account_get(account_id):
     global accounts
@@ -92,12 +96,12 @@ while True:
         else:
             banned = False
         account_create(username, password, riot_id, region, banned)
-        input("account created, press enter to return")
+        input("account created, press enter to return...")
 
     elif option == "2":
         clear()
         accounts_read()
-        input("press enter to return")
+        input("press enter to return...")
     
     elif option == "3":
         clear()
@@ -105,28 +109,28 @@ while True:
         try:
             account_id = int(input("insert account id: "))
             account_get(account_id)
-            input("account copied, press enter to return")
+            input("account copied, press enter to return...")
         except (ValueError, IndexError):
-            input("wrong input, press enter to return")
+            input("wrong input, press enter to return...")
     
     elif option == "4":
         clear()
         accounts_read()
         try:
             account_id = int(input("insert id:"))
-            username = input("insert new username (enter to skip)")
-            password = input("insert new password (enter to skip)")
-            riot_id = input("insert new riot id (enter to skip)")
-            region = input("insert new region (enter to skip)")
-            banned = input("banned? (y/n) (enter to skip)")
+            username = input("insert new username (enter to skip) ")
+            password = input("insert new password (enter to skip) ")
+            riot_id = input("insert new riot id (enter to skip) ")
+            region = input("insert new region (enter to skip) ")
+            banned = input("banned? (y/n) (enter to skip) ")
             if banned == "y":
                 banned = True
             else:
                 banned = False
             account_update(account_id, username, password, riot_id, region, banned)
-            input("account updated, press enter to return")
+            input("account updated, press enter to return...")
         except (ValueError, IndexError):
-            input("wrong input, press enter to return")
+            input("wrong input, press enter to return...")
 
     
     elif option == "5":
@@ -135,9 +139,9 @@ while True:
         try:
             account_id = int(input("insert account id: "))
             account_delete(account_id)
-            input("account deleted, press enter to return")
+            input("account deleted, press enter to return...")
         except (ValueError, IndexError):
-            input("wrong input, press enter to return")
+            input("wrong input, press enter to return...")
     
     else:
         print("not in range")
