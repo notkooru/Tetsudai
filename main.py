@@ -1,5 +1,6 @@
 import os
 import json
+import tkinter
 
 # CRUD
 def account_create(username, password, riotID, region, banned=False):
