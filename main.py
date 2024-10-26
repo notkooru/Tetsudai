@@ -92,7 +92,7 @@ while True:
         else:
             banned = False
         account_create(username, password, riot_id, region, banned)
-        input("account created, press a key to return")
+        input("account created, press enter to return")
 
     elif option == "2":
         clear()
@@ -105,9 +105,9 @@ while True:
         try:
             account_id = int(input("insert account id: "))
             account_get(account_id)
-            input("account copied, press a key to return")
+            input("account copied, press enter to return")
         except (ValueError, IndexError):
-            input("wrong input, press a key to return")
+            input("wrong input, press enter to return")
     
     elif option == "4":
         clear()
@@ -124,9 +124,9 @@ while True:
             else:
                 banned = False
             account_update(account_id, username, password, riot_id, region, banned)
-            input("account updated, press a key to return")
+            input("account updated, press enter to return")
         except (ValueError, IndexError):
-            input("wrong input, press a key to return")
+            input("wrong input, press enter to return")
 
     
     elif option == "5":
@@ -135,9 +135,9 @@ while True:
         try:
             account_id = int(input("insert account id: "))
             account_delete(account_id)
-            input("account deleted, press a key to return")
+            input("account deleted, press enter to return")
         except (ValueError, IndexError):
-            input("wrong input, press a key to return")
+            input("wrong input, press enter to return")
     
     else:
         print("not in range")
