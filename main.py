@@ -68,3 +68,8 @@ def paste_to_clipboard(credentials):
 
 #account list structure: username, password, riotID, banned status
 accounts = []
+
+#GUI
+root = tkinter.Tk()
+
+root.mainloop()
