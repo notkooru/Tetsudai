@@ -1,4 +1,4 @@
 # tetsukai
-this is a League of Legends (don't play it) account manager
+this is a League of Legends account manager
 
 powered by ChipaSegura
