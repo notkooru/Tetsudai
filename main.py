@@ -84,8 +84,8 @@ accounts = []
 root = tkinter.Tk()
 
 #window settings
-window_height = 800
-window_width = 800
+window_height = 500
+window_width = 650
 
 screen_height = root.winfo_screenheight()
 screen_width = root.winfo_screenwidth()
