@@ -80,10 +80,12 @@ def clear():
 # Account list structure: username, password, riotID, banned status
 accounts = []
 
-#GUI
+# Mayron besó una de 13
+
+# GUI
 root = tkinter.Tk()
 
-#window settings
+# Window settings
 window_height = 500
 window_width = 650
 
@@ -95,8 +97,8 @@ y = int((screen_width/2) - (window_width/2))
 
 root.geometry(f"{window_width}x{window_height}+{y}+{x}")
 
-#widget setup
+# Widget setup
 
-#widget packaging
+# Widget packaging
 
 root.mainloop()
