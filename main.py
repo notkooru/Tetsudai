@@ -69,6 +69,7 @@ def load_db():
             undump = json.load(f)
             global accounts
             accounts = undump
+            f.close()
     else:
         save_db()
 
