@@ -8,7 +8,11 @@ from tabulate import tabulate
 # CRUD
 def account_create(username, password, riot_id, region, banned):
     global accounts
-    account = [username, password, riot_id, region, banned]
+    account = {"username" : username, 
+               "password" : password, 
+               "riot id" : riot_id,
+               "region" : region,
+               "banned status" : banned}
     accounts.append(account)
     save_db()
 
@@ -18,7 +22,7 @@ def accounts_read():
     accounts_formated = []
 
     for index, account in enumerate(accounts):
-        accounts_formated.append([index, account[0], account[1], account[2], account[3], account[4]])
+        accounts_formated.append([index, account["username"], account["password"], account["riot id"], account["region"], account["banned status"]])
 
     headers = ["id", "username", "password", "riot id", "region", "banned"]
 
@@ -30,22 +34,22 @@ def accounts_read():
 def account_get(account_id):
     global accounts
     account = accounts[account_id]
-    paste_to_clipboard(f"{account[0]}, {account[1]}")
+    paste_to_clipboard(f"{account["username"]}, {account["password"]}")
 
 def account_update(account_id, username="", password="", riot_id="", region="", banned=False):
     global accounts
     account_edit = accounts[account_id]
 
     if username != "":
-        account_edit[0] = username
+        account_edit["username"] = username
     if password != "":
-        account_edit[1] = password
+        account_edit["password"] = password
     if riot_id != "":
-        account_edit[2] = riot_id
+        account_edit["riot id"] = riot_id
     if region != "":
-        account_edit[3] = region
-    if banned != account_edit[4]:
-        account_edit[4] = banned
+        account_edit["region"] = region
+    if banned != account_edit["banned status"]:
+        account_edit["banned status"] = banned
 
     accounts[account_id] = account_edit
     save_db()
