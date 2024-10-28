@@ -83,11 +83,13 @@ def paste_to_clipboard(account):
 def clear():
     os.system('cls')
 
-# Account list structure: username, password, riotID, banned status
+# Account dict structure: username, password, riotID, banned status
 accounts = []
 
 # Startup actions
 load_db()
+
+# TODO: Database converter
 
 # GUI/CLI
 while True:
