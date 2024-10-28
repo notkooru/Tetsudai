@@ -18,7 +18,7 @@ def account_create(username, password, riot_id, region, banned):
 
 def accounts_read():
     global accounts
-    
+
     accounts_formated = []
 
     for index, account in enumerate(accounts):
