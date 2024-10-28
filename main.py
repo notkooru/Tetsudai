@@ -110,7 +110,6 @@ db_load()
 if len(accounts) > 0 and type(accounts[0]) == list:
     db_convert()
 
-
 # GUI/CLI
 while True:
     clear()
