@@ -107,7 +107,7 @@ accounts = []
 db_load()
 
 # Database converter
-if type(accounts[0]) == list:
+if len(accounts) > 0 and type(accounts[0]) == list:
     db_convert()
 
 
