@@ -131,12 +131,12 @@ while True:
         else:
             banned = False
         account_create(username, password, riot_id, region, banned)
-        input("account created, press enter to return...")
+        input("account created, press enter to return... ")
 
     elif option == "2":
         clear()
         accounts_read()
-        input("press enter to return...")
+        input("press enter to return... ")
 
     elif option == "3":
         clear()
@@ -144,15 +144,15 @@ while True:
         try:
             account_id = int(input("insert account id: "))
             account_get(account_id)
-            input("account copied, press enter to return...")
+            input("account copied, press enter to return... ")
         except (ValueError, IndexError):
-            input("wrong input, press enter to return...")
+            input("wrong input, press enter to return... ")
 
     elif option == "4":
         clear()
         accounts_read()
         try:
-            account_id = int(input("insert id:"))
+            account_id = int(input("insert id: "))
             username = input("insert new username (enter to skip) ")
             password = input("insert new password (enter to skip) ")
             riot_id = input("insert new riot id (enter to skip) ")
@@ -163,9 +163,9 @@ while True:
             else:
                 banned = False
             account_update(account_id, username, password, riot_id, region, banned)
-            input("account updated, press enter to return...")
+            input("account updated, press enter to return... ")
         except (ValueError, IndexError):
-            input("wrong input, press enter to return...")
+            input("wrong input, press enter to return... ")
 
     elif option == "5":
         clear()
@@ -173,9 +173,9 @@ while True:
         try:
             account_id = int(input("insert account id: "))
             account_delete(account_id)
-            input("account deleted, press enter to return...")
+            input("account deleted, press enter to return... ")
         except (ValueError, IndexError):
-            input("wrong input, press enter to return...")
+            input("wrong input, press enter to return... ")
 
     else:
         print("not in range")
