@@ -14,7 +14,7 @@ def account_create(username, password, riot_id, region, banned):
                "region" : region,
                "banned status" : banned}
     accounts.append(account)
-    save_db()
+    db_save()
 
 def accounts_read():
     global accounts
@@ -52,22 +52,22 @@ def account_update(account_id, username="", password="", riot_id="", region="", 
         account_edit["banned status"] = banned
 
     accounts[account_id] = account_edit
-    save_db()
+    db_save()
 
 def account_delete(account_id):
     global accounts
     del accounts[account_id]
-    save_db()
+    db_save()
 
 # Database actions
-def save_db():
+def db_save():
     global accounts
     dump = json.dumps(accounts, indent=4)
     f = open(FILE, "w")
     f.write(dump)
     f.close
 
-def load_db():
+def db_load():
     if os.path.exists(FILE):
         with open(FILE, "r") as f:
             undump = json.load(f)
@@ -75,9 +75,9 @@ def load_db():
             accounts = undump
             f.close()
     else:
-        save_db()
+        db_save()
 
-def convert_db():
+def db_convert():
     global accounts
     accounts_converted = []
     for account in accounts:
@@ -88,7 +88,7 @@ def convert_db():
                              "banned status" : account[4]}
         accounts_converted.append(account_converted)
     accounts = accounts_converted
-    save_db()
+    db_save()
 
 # Constants and useful functions
 FILE = "db.json"
@@ -104,11 +104,11 @@ def clear():
 accounts = []
 
 # Startup actions
-load_db()
+db_load()
 
 # Database converter
 if type(accounts[0]) == list:
-    convert_db()
+    db_convert()
 
 
 # GUI/CLI
@@ -117,7 +117,7 @@ while True:
     print("1. create account\n2. read all accounts\n3. get account\n4. update account\n5. delete account\nuse 0 to exit")
     option = input()
     if option == "0":
-        save_db()
+        db_save()
         break
 
     elif option == "1":
