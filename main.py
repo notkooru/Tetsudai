@@ -100,7 +100,7 @@ def paste_to_clipboard(account):
 def clear():
     os.system('cls')
 
-# Account dict structure: username, password, riotID, region, banned status
+# Account dict structure: username, password, riot id, region, banned status
 accounts = []
 
 # Startup actions
