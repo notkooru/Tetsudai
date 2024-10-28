@@ -24,7 +24,7 @@ def accounts_read():
     for index, account in enumerate(accounts):
         accounts_formated.append([index, account["username"], account["password"], account["riot id"], account["region"], account["banned status"]])
 
-    headers = ["id", "username", "password", "riot id", "region", "banned"]
+    headers = ["id", "username", "password", "riot id", "region", "banned status"]
 
     if len(accounts) == 0:
         print("No accounts to show")
@@ -77,6 +77,19 @@ def load_db():
     else:
         save_db()
 
+def convert_db():
+    global accounts
+    accounts_converted = []
+    for account in accounts:
+        account_converted = {"username" : account[0],
+                             "password" : account[1],
+                             "riot id" : account[2],
+                             "region" : account[3],
+                             "banned status" : account[4]}
+        accounts_converted.append(account_converted)
+    accounts = accounts_converted
+    save_db()
+
 # Constants and useful functions
 FILE = "db.json"
 
@@ -87,13 +100,16 @@ def paste_to_clipboard(account):
 def clear():
     os.system('cls')
 
-# Account dict structure: username, password, riotID, banned status
+# Account dict structure: username, password, riotID, region, banned status
 accounts = []
 
 # Startup actions
 load_db()
 
 # TODO: Database converter
+if type(accounts[0]) == list:
+    convert_db()
+
 
 # GUI/CLI
 while True:
