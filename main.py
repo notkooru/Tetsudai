@@ -106,7 +106,7 @@ accounts = []
 # Startup actions
 load_db()
 
-# TODO: Database converter
+# Database converter
 if type(accounts[0]) == list:
     convert_db()
 
