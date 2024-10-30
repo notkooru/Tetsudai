@@ -129,6 +129,7 @@ while True:
         riot_id = input("insert riot id: ")
         region = input("insert region: ")
         banned_status = input("is it banned? (y/n): ")
+        banned_status = banned_status.lower()
         if banned_status == "y":
             banned_status = True
         else:
@@ -161,6 +162,7 @@ while True:
             riot_id = input("insert new riot id (enter to skip) ")
             region = input("insert new region (enter to skip) ")
             banned_status = input("banned? (y/n) (enter to skip) ")
+            banned_status = banned_status.lower()
             if banned_status == "y":
                 banned_status = True
             else:
