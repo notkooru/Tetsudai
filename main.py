@@ -80,8 +80,6 @@ def clear():
 # Account list structure: username, password, riotID, banned status
 accounts = []
 
-# Mayron besó una de 13
-
 # GUI
 root = tkinter.Tk()
 
