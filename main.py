@@ -5,14 +5,17 @@ from tabulate import tabulate
 # Use this to create exe
 # python -m PyInstaller --onefile main.py
 
+# Mayron besó una de 13 amigo
+# Pero no se sabe si años o centímetros
+
 # CRUD
-def account_create(username, password, riot_id, region, banned):
+def account_create(username, password, riot_id, region, banned_status):
     global accounts
     account = {"username" : username, 
                "password" : password, 
                "riot id" : riot_id,
                "region" : region,
-               "banned status" : banned}
+               "banned status" : banned_status}
     accounts.append(account)
     db_save()
 
@@ -36,7 +39,7 @@ def account_get(account_id):
     account = accounts[account_id]
     paste_to_clipboard(f"{account["username"]}, {account["password"]}")
 
-def account_update(account_id, username="", password="", riot_id="", region="", banned=False):
+def account_update(account_id, username="", password="", riot_id="", region="", banned_status=False):
     global accounts
     account_edit = accounts[account_id]
 
@@ -48,8 +51,8 @@ def account_update(account_id, username="", password="", riot_id="", region="", 
         account_edit["riot id"] = riot_id
     if region != "":
         account_edit["region"] = region
-    if banned != account_edit["banned status"]:
-        account_edit["banned status"] = banned
+    if banned_status != account_edit["banned status"]:
+        account_edit["banned status"] = banned_status
 
     accounts[account_id] = account_edit
     db_save()
@@ -125,12 +128,12 @@ while True:
         password = input("insert password: ")
         riot_id = input("insert riot id: ")
         region = input("insert region: ")
-        banned = input("is it banned? (y/n): ")
-        if banned == "y":
-            banned = True
+        banned_status = input("is it banned? (y/n): ")
+        if banned_status == "y":
+            banned_status = True
         else:
-            banned = False
-        account_create(username, password, riot_id, region, banned)
+            banned_status = False
+        account_create(username, password, riot_id, region, banned_status)
         input("account created, press enter to return... ")
 
     elif option == "2":
@@ -157,12 +160,12 @@ while True:
             password = input("insert new password (enter to skip) ")
             riot_id = input("insert new riot id (enter to skip) ")
             region = input("insert new region (enter to skip) ")
-            banned = input("banned? (y/n) (enter to skip) ")
-            if banned == "y":
-                banned = True
+            banned_status = input("banned? (y/n) (enter to skip) ")
+            if banned_status == "y":
+                banned_status = True
             else:
-                banned = False
-            account_update(account_id, username, password, riot_id, region, banned)
+                banned_status = False
+            account_update(account_id, username, password, riot_id, region, banned_status)
             input("account updated, press enter to return... ")
         except (ValueError, IndexError):
             input("wrong input, press enter to return... ")
