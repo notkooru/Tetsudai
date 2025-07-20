@@ -80,7 +80,7 @@ def db_load():
     else:
         db_save()
 
-def db_convert():
+def db_convert(): # REMOVE BEFORE RELEASE | converts old account format of it being a list to dictionaries so it became easy to print
     global accounts
     accounts_converted = []
     for account in accounts:
@@ -110,7 +110,7 @@ accounts = []
 db_load()
 
 # Database converter
-if len(accounts) > 0 and type(accounts[0]) == list:
+if len(accounts) > 0 and type(accounts[0]) == list: # Checks if it had the old type of database of it being a list of lists instead of a list with dictionaries
     db_convert()
 
 # GUI/CLI
