@@ -14,7 +14,7 @@ def account_create(username, password, riot_id, region, banned_status):
     account = {"username" : username, 
                "password" : password, 
                "riot id" : riot_id,
-               "region" : region,
+               "region" : region.upper(),
                "banned status" : banned_status}
     accounts.append(account)
     db_save()
