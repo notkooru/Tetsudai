@@ -112,7 +112,7 @@ db_load()
 # Database converter
 if len(accounts) > 0 and type(accounts[0]) == list: # Checks if it had the old type of database of it being a list of lists instead of a list with dictionaries
     db_convert()
-
+'''
 # GUI/CLI
 while True:
     clear()
@@ -184,3 +184,9 @@ while True:
 
     else:
         print("not in range")
+'''
+def main():
+    print("test")
+
+if __name__ == "__main__":
+    main()
